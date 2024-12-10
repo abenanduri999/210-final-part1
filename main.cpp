@@ -112,6 +112,12 @@ int main(){
         cout<<pair.first<<" "<<pair.second<<endl; 
     }
     cout<<endl; 
+    cout<<"Friendship Bracelet Line:"<<endl; 
+    for(int k = 0; k < friendBr.size(); k++)
+    {
+        cout<<friendBr[k].name<<" "<<friendBr[k].order<<endl;
+    }
+    cout<<endl;
 
     for(int i = 0; i < 10; i++)
     {
@@ -148,12 +154,35 @@ int main(){
 
         else
         {
-            muffinLine.pop_back(); 
+            muffinLine.pop_front(); 
             for(const auto& pair : muffinLine)
             {
             cout<<pair.first<<" "<<pair.second<<endl;
             }
             cout<<endl;
+
+            prob = rand() % 100; 
+
+            if(prob <= 50)
+            {
+                cust = rand() % 30;
+                ord = rand() % 10;
+                Customer temp; 
+                temp.name = names[cust];
+                temp.order = friendBColors[ord]; 
+                friendBr.push_back(temp);
+            }
+            else
+            {
+                if(!friendBr.empty())
+                {
+                    friendBr.erase(friendBr.begin());
+                }
+                else
+                {
+                    cout<<"List is empty"<<endl; 
+                }
+            }
         }
     }
 
