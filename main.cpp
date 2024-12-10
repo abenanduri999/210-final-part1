@@ -25,8 +25,8 @@ void addCustomer(Coffee * head, string n, string o)
     newCoffee->name = n; 
     newCoffee->order = o;
 
-    newCoffee->next = *head;
-     
+    newCoffee->next = head;
+    head = newCoffee; 
 }
 
 int main(){
@@ -40,12 +40,19 @@ int main(){
     string drinks[10] = {"Espresso", "Americano", "Cappachino",  "Latte",  "Macchiato", "Mocha", 
                      "Flat White", "Cold Brew",  "Iced Latte",  "Affogato"};
 
-    Coffee* coffeeLine = nullptr; 
+    Coffee* coffeeLine = nullptr;
     
-    for(int i = 0; i < 10; i++)
+     
+
+    int cust = rand() % 30; 
+    int ord = rand() % 10;
+    
+    addCustomer(coffeeLine, names[cust], drinks[ord]); 
+    
+   /* for(int i = 0; i < 10; i++)
     {
 
-    }
+    }*/
 
 
     return 0; 
