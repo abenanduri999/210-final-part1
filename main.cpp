@@ -38,10 +38,13 @@ void deleteCustomer(Coffee *&head)
     {
         cout<<"The list is empty"<<endl;
     }
-    
+
+    else
+    {
     Coffee* temp = head; 
     head = head -> next; 
-    delete temp; 
+    delete temp;
+    } 
 }
 
 void printList(Coffee *head)
@@ -113,10 +116,11 @@ int main(){
 
         cust = rand() % 30; 
         ord = rand() % 10;
-        Customer temp; 
-        temp.name = names[cust]; 
-        temp.order = friendBColors[ord]; 
-        friendBr.push_back(temp);  
+        Customer temp;
+        friendBr.push_back(createCust(names[cust], friendBColors[ord])); 
+        //temp.name = names[cust]; 
+        //temp.order = friendBColors[ord]; 
+        //friendBr.push_back(temp);  
 
         cust = rand()% 30; 
         ord = rand()% 10;
@@ -158,7 +162,9 @@ int main(){
     
 
     for(int i = 0; i < 10; i++)
-    {
+    {   
+        cout<<"Round "<<i<<endl;
+
         int prob = rand() % 100; 
         cout<<"Coffee Line:"<<endl; 
         if(prob <= 50)
@@ -209,9 +215,10 @@ int main(){
                 cust = rand() % 30;
                 ord = rand() % 10;
                 Customer temp; 
-                temp.name = names[cust];
-                temp.order = friendBColors[ord]; 
-                friendBr.push_back(temp);
+                friendBr.push_back(createCust(names[cust], friendBColors[ord]));
+                //temp.name = names[cust];
+                //temp.order = friendBColors[ord]; 
+                //friendBr.push_back(temp);
                 for(int l = 0; l < friendBr.size(); l++)
                 {
                     cout<<friendBr[l].name<<" "<<friendBr[l].order<<endl;
@@ -280,7 +287,7 @@ int main(){
 
             }
         }
-
+        cout<<endl;
     }
 
 
