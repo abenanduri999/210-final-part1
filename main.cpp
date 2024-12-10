@@ -19,7 +19,7 @@ struct Coffee
     Coffee* next; 
 };
 
-void addCustomer(Coffee * head, string n, string o)
+void addCustomer(Coffee * &head, string n, string o)
 {
     Coffee* newCoffee = new Coffee; 
     newCoffee->name = n; 
@@ -67,10 +67,20 @@ int main(){
         int ord = rand() % 10;
         addCustomer(coffeeLine, names[cust], drinks[ord]); 
     }
-   /* for(int i = 0; i < 10; i++)
+    cout<<"Coffee Line:"<<endl; 
+    printList(coffeeLine);
+    for(int i = 0; i < 10; i++)
     {
+        int prob = rand() % 100; 
 
-    }*/
+        if(prob <= 50)
+        {
+            cust = rand() %30;
+            ord = rand() % 10; 
+            addCustomer(coffeeLine, names[cust], drinks[ord]);
+        }
+        
+    }
 
 
     return 0; 
