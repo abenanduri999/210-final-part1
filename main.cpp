@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <array>
 #include <ctime>
 
 
@@ -18,6 +19,16 @@ struct Coffee
     Coffee* next; 
 };
 
+void addCustomer(Coffee * head, string n, string o)
+{
+    Coffee* newCoffee = new Coffee; 
+    newCoffee->name = n; 
+    newCoffee->order = o;
+
+    newCoffee->next = *head;
+     
+}
+
 int main(){
 
 
@@ -29,8 +40,13 @@ int main(){
     string drinks[10] = {"Espresso", "Americano", "Cappachino",  "Latte",  "Macchiato", "Mocha", 
                      "Flat White", "Cold Brew",  "Iced Latte",  "Affogato"};
 
-    Coffee* coffeeLine; 
+    Coffee* coffeeLine = nullptr; 
     
+    for(int i = 0; i < 10; i++)
+    {
+
+    }
+
 
     return 0; 
 }
