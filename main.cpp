@@ -162,7 +162,7 @@ int main(){
             cout<<endl;
 
             prob = rand() % 100; 
-
+            cout<<"Friendship Bracelet Line:"<<endl;
             if(prob <= 50)
             {
                 cust = rand() % 30;
@@ -171,6 +171,11 @@ int main(){
                 temp.name = names[cust];
                 temp.order = friendBColors[ord]; 
                 friendBr.push_back(temp);
+                for(int l = 0; l < friendBr.size(); l++)
+                {
+                    cout<<friendBr[l].name<<" "<<friendBr[l].order<<endl;
+                }
+                cout<<endl; 
             }
             else
             {
@@ -182,6 +187,11 @@ int main(){
                 {
                     cout<<"List is empty"<<endl; 
                 }
+                for(int h = 0; h < friendBr.size(); h++)
+                {
+                    cout<<friendBr[h].name<<" "<<friendBr[h].order<<endl;
+                }
+                cout<<endl; 
             }
         }
     }
