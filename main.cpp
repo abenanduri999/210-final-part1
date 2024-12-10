@@ -189,20 +189,33 @@ int main(){
         cust = rand() % 30; 
         ord = rand() % 10;
         muffinLine.push_back({names[cust], muffins[ord]});
-        for(const auto& pair : muffinLine)
-        {
-            cout<<pair.first<<" "<<pair.second<<endl;
-        }
+            if(muffinLine.empty())
+            {
+                cout<<"The muffin Line is empty"<<endl; 
+            }
+            else
+            {
+                for(const auto& pair : muffinLine)
+                {
+                    cout<<pair.first<<" "<<pair.second<<endl;
+                }
+            }
         cout<<endl;
         }
 
         else
         {
-            
-            muffinLine.pop_front(); 
-            for(const auto& pair : muffinLine)
+            if(muffinLine.empty())
             {
-            cout<<pair.first<<" "<<pair.second<<endl;
+                cout<<"The Line is empty"<<endl; 
+            }
+            else
+            {
+                muffinLine.pop_front(); 
+                for(const auto& pair : muffinLine)
+                {
+                cout<<pair.first<<" "<<pair.second<<endl;
+                }
             }
             cout<<endl;
 
