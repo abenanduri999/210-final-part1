@@ -3,7 +3,7 @@
 #include <array>
 #include <ctime>
 #include <deque>
-
+#include <vector>
 
 using namespace std; 
 
@@ -72,8 +72,13 @@ int main(){
     string muffins[10] ={"Blueberry", "chocolate", "bran", "poppy seed", "cinnamon", 
                         "Pumpkin", "Raspberry", "white choco", "lemon", "almond"}; 
 
+    string friendBColors[10] = {"Blue", "Red", "White", "Black", "Green",
+                                "Brown", "Gray", "Purple", "cyan", "Pink"};
+
     Coffee* coffeeLine = nullptr;
     deque <pair<string, string>> muffinLine; 
+    vector<Customer> friendBr; 
+    
 
     
      
@@ -89,6 +94,13 @@ int main(){
         cust = rand() % 30; 
         ord = rand() % 10;
         muffinLine.push_back({names[cust], muffins[ord]}); 
+
+        cust = rand() % 30; 
+        ord = rand() % 10;
+        Customer temp; 
+        temp.name = names[cust]; 
+        temp.order = friendBColors[ord]; 
+        friendBr.push_back(temp);  
     }
     
     cout<<"Coffee Line:"<<endl; 
@@ -121,18 +133,27 @@ int main(){
         }
 
         prob = rand() % 100; 
-
+        cout<<"Muffin Line:"<<endl; 
         if(prob <= 50)
         {
         cust = rand() % 30; 
         ord = rand() % 10;
         muffinLine.push_back({names[cust], muffins[ord]});
-
+        for(const auto& pair : muffinLine)
+        {
+            cout<<pair.first<<" "<<pair.second<<endl;
+        }
+        cout<<endl;
         }
 
         else
         {
             muffinLine.pop_back(); 
+            for(const auto& pair : muffinLine)
+            {
+            cout<<pair.first<<" "<<pair.second<<endl;
+            }
+            cout<<endl;
         }
     }
 
