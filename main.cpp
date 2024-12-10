@@ -26,8 +26,11 @@ int main(){
          "Scarlett", "Jack", "Grace", "Samuel", "Ella", "William", "Zoe", "Jack", "Lily", "Michael"};
      //names generated online
 
+    string drinks[10] = {"Espresso", "Americano", "Cappachino",  "Latte",  "Macchiato", "Mocha", 
+                     "Flat White", "Cold Brew",  "Iced Latte",  "Affogato"};
 
-
+    Coffee* coffeeLine; 
+    
 
     return 0; 
 }
