@@ -56,6 +56,8 @@ void printList(Coffee *head)
     }
 }
 
+
+
 int main(){
 
 
@@ -77,7 +79,8 @@ int main(){
      
     srand(time(0));
     
-    
+    int cust = 0;
+    int ord = 0;
     for(int j = 0; j < 3; j++)
     {
         int cust = rand() % 30; 
@@ -92,7 +95,11 @@ int main(){
     printList(coffeeLine);
     cout<<endl; 
     cout<<"Muffin Line:"<<endl; 
-    for(string c: coffeeLine)
+    for(const auto& pair: muffinLine)
+    {
+        cout<<pair.first<<" "<<pair.second<<endl; 
+    }
+    cout<<endl; 
 
     for(int i = 0; i < 10; i++)
     {
@@ -111,6 +118,21 @@ int main(){
             deleteCustomer(coffeeLine); 
             printList(coffeeLine); 
             cout<<endl; 
+        }
+
+        prob = rand() % 100; 
+
+        if(prob <= 50)
+        {
+        cust = rand() % 30; 
+        ord = rand() % 10;
+        muffinLine.push_back({names[cust], muffins[ord]});
+
+        }
+
+        else
+        {
+            muffinLine.pop_back(); 
         }
     }
 
