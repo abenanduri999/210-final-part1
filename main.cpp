@@ -7,11 +7,11 @@
 
 using namespace std; 
 
-//struct Customer
-//{
- //   string name; 
-  //  string order; 
-//}; 
+struct Customer
+{
+    string name; 
+    string order; 
+}; 
 
 struct Coffee
 {
@@ -67,22 +67,33 @@ int main(){
     string drinks[10] = {"Espresso", "Americano", "Cappachino",  "Latte",  "Macchiato", "Mocha", 
                      "Flat White", "Cold Brew",  "Iced Latte",  "Affogato"};
 
+    string muffins[10] ={"Blueberry", "chocolate", "bran", "poppy seed", "cinnamon", 
+                        "Pumpkin", "Raspberry", "white choco", "lemon", "almond"}; 
+
     Coffee* coffeeLine = nullptr;
+    deque <pair<string, string>> muffinLine; 
+
     
      
     srand(time(0));
-    int cust = rand() % 30; 
-    int ord = rand() % 10;
+    
     
     for(int j = 0; j < 3; j++)
     {
         int cust = rand() % 30; 
         int ord = rand() % 10;
         addCustomer(coffeeLine, names[cust], drinks[ord]); 
+        cust = rand() % 30; 
+        ord = rand() % 10;
+        muffinLine.push_back({names[cust], muffins[ord]}); 
     }
+    
     cout<<"Coffee Line:"<<endl; 
     printList(coffeeLine);
     cout<<endl; 
+    cout<<"Muffin Line:"<<endl; 
+    for(string c: coffeeLine)
+
     for(int i = 0; i < 10; i++)
     {
         int prob = rand() % 100; 
