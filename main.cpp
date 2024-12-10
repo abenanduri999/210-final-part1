@@ -29,6 +29,20 @@ void addCustomer(Coffee * head, string n, string o)
     head = newCoffee; 
 }
 
+void printList(Coffee *head)
+{
+    Coffee* current = head; 
+    if(current == nullptr)
+    {
+        cout<<"The list is empty"<<endl; 
+    }
+    while(current != nullptr)
+    {
+        cout<<current->name<<" "<<current->order<<endl; 
+        current = current->next; 
+    }
+}
+
 int main(){
 
 
@@ -47,8 +61,12 @@ int main(){
     int cust = rand() % 30; 
     int ord = rand() % 10;
     
-    addCustomer(coffeeLine, names[cust], drinks[ord]); 
-    
+    for(int j = 0; j < 3; j++)
+    {
+        int cust = rand() % 30; 
+        int ord = rand() % 10;
+        addCustomer(coffeeLine, names[cust], drinks[ord]); 
+    }
    /* for(int i = 0; i < 10; i++)
     {
 
