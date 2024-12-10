@@ -4,6 +4,8 @@
 #include <ctime>
 #include <deque>
 #include <vector>
+#include <stack>
+
 
 using namespace std; 
 
@@ -56,6 +58,15 @@ void printList(Coffee *head)
     }
 }
 
+Customer createCust(string n, string o)
+{
+    Customer temp;
+    temp.name = n;
+    temp.order = o;
+
+    return temp;
+}
+
 
 
 int main(){
@@ -75,9 +86,13 @@ int main(){
     string friendBColors[10] = {"Blue", "Red", "White", "Black", "Green",
                                 "Brown", "Gray", "Purple", "cyan", "Pink"};
 
+    string flavors[10] = {"Choco", "Mint Choco", "Vanilla", "Bubble gum", "pistachio",
+                        "mint", "Rocky Road", "fudge", "peanut butter", "cherry"};
+
     Coffee* coffeeLine = nullptr;
     deque <pair<string, string>> muffinLine; 
     vector<Customer> friendBr; 
+    stack<Customer> iceCreamLine; 
     
 
     
@@ -91,6 +106,7 @@ int main(){
         int cust = rand() % 30; 
         int ord = rand() % 10;
         addCustomer(coffeeLine, names[cust], drinks[ord]); 
+        
         cust = rand() % 30; 
         ord = rand() % 10;
         muffinLine.push_back({names[cust], muffins[ord]}); 
@@ -101,23 +117,31 @@ int main(){
         temp.name = names[cust]; 
         temp.order = friendBColors[ord]; 
         friendBr.push_back(temp);  
+
+        cust = rand()% 30; 
+        ord = rand()% 10;
+        iceCreamLine.push(createCust(names[cust], flavors[ord])); 
     }
     
     cout<<"Coffee Line:"<<endl; 
     printList(coffeeLine);
     cout<<endl; 
+
     cout<<"Muffin Line:"<<endl; 
     for(const auto& pair: muffinLine)
     {
         cout<<pair.first<<" "<<pair.second<<endl; 
     }
     cout<<endl; 
+
     cout<<"Friendship Bracelet Line:"<<endl; 
     for(int k = 0; k < friendBr.size(); k++)
     {
         cout<<friendBr[k].name<<" "<<friendBr[k].order<<endl;
     }
     cout<<endl;
+
+    
 
     for(int i = 0; i < 10; i++)
     {
@@ -154,6 +178,7 @@ int main(){
 
         else
         {
+            
             muffinLine.pop_front(); 
             for(const auto& pair : muffinLine)
             {
@@ -161,9 +186,11 @@ int main(){
             }
             cout<<endl;
 
-            prob = rand() % 100; 
-            cout<<"Friendship Bracelet Line:"<<endl;
-            if(prob <= 50)
+        }
+
+        prob = rand() % 100; 
+        cout<<"Friendship Bracelet Line:"<<endl;
+        if(prob <= 50)
             {
                 cust = rand() % 30;
                 ord = rand() % 10;
@@ -177,7 +204,7 @@ int main(){
                 }
                 cout<<endl; 
             }
-            else
+        else
             {
                 if(!friendBr.empty())
                 {
@@ -192,8 +219,8 @@ int main(){
                     cout<<friendBr[h].name<<" "<<friendBr[h].order<<endl;
                 }
                 cout<<endl; 
+            
             }
-        }
     }
 
 
