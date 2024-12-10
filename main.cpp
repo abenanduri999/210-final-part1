@@ -2,6 +2,7 @@
 #include <string>
 #include <array>
 #include <ctime>
+#include <deque>
 
 
 using namespace std; 
@@ -27,6 +28,18 @@ void addCustomer(Coffee * &head, string n, string o)
 
     newCoffee->next = head;
     head = newCoffee; 
+}
+
+void deleteCustomer(Coffee *&head)
+{
+    if(head == nullptr)
+    {
+        cout<<"The list is empty"<<endl;
+    }
+    
+    Coffee* temp = head; 
+    head = head -> next; 
+    delete temp; 
 }
 
 void printList(Coffee *head)
@@ -57,7 +70,7 @@ int main(){
     Coffee* coffeeLine = nullptr;
     
      
-
+    srand(time(0));
     int cust = rand() % 30; 
     int ord = rand() % 10;
     
@@ -69,17 +82,25 @@ int main(){
     }
     cout<<"Coffee Line:"<<endl; 
     printList(coffeeLine);
+    cout<<endl; 
     for(int i = 0; i < 10; i++)
     {
         int prob = rand() % 100; 
-
+        cout<<"Coffee Line:"<<endl; 
         if(prob <= 50)
         {
             cust = rand() %30;
             ord = rand() % 10; 
             addCustomer(coffeeLine, names[cust], drinks[ord]);
+            printList(coffeeLine);
+            cout<<endl; 
         }
-        
+        else    
+        {
+            deleteCustomer(coffeeLine); 
+            printList(coffeeLine); 
+            cout<<endl; 
+        }
     }
 
 
