@@ -141,6 +141,20 @@ int main(){
     }
     cout<<endl;
 
+    cout<<"Ice Cream Line: "<<endl; 
+    stack<Customer>temp; 
+
+    while(!iceCreamLine.empty())
+    {
+        cout<<iceCreamLine.top().name<<" "<<iceCreamLine.top().order<<endl; 
+        temp.push(iceCreamLine.top());
+        iceCreamLine.pop(); 
+    }
+    while(!temp.empty())
+    {
+        iceCreamLine.push(temp.top());
+        temp.pop();
+    }
     
 
     for(int i = 0; i < 10; i++)
@@ -221,6 +235,52 @@ int main(){
                 cout<<endl; 
             
             }
+
+        prob = rand() % 100; 
+        cout<<"Ice Cream Line:"<<endl;
+        if(prob <= 50)
+        {
+            cust = rand() % 30;
+            ord = rand() % 10;
+            iceCreamLine.push(createCust(names[cust], flavors[ord]));
+
+            while(!iceCreamLine.empty())
+            {
+                cout<<iceCreamLine.top().name<<" "<<iceCreamLine.top().order<<endl; 
+                temp.push(iceCreamLine.top());
+                iceCreamLine.pop(); 
+            }
+            while(!temp.empty())
+            {
+                iceCreamLine.push(temp.top());
+                temp.pop();
+            }
+
+        }
+        else
+        {
+            if(iceCreamLine.empty())
+            {
+                cout<<"Line is empty"<<endl;
+            }
+            else
+            {
+                iceCreamLine.pop();
+                while(!iceCreamLine.empty())
+                {
+                    cout<<iceCreamLine.top().name<<" "<<iceCreamLine.top().order<<endl; 
+                    temp.push(iceCreamLine.top());
+                    iceCreamLine.pop(); 
+                }
+                while(!temp.empty())  //copied my own code from up top to print the stack, i that why huge segments appeared 
+                {
+                    iceCreamLine.push(temp.top());
+                    temp.pop();
+                }
+
+            }
+        }
+
     }
 
 
